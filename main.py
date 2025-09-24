@@ -11,20 +11,20 @@ ofertas = [100, 140, 160]
 demandas = [120, 130, 150]
 
 def main():
-    MatrizInicial, Zmin = metodo_canto_noroeste(custos, ofertas, demandas)
-    solucaoV, custoV = metodo_de_vogel(custos, ofertas, demandas)
+    matriz_inicial, zmin = metodo_canto_noroeste(custos, ofertas, demandas)
+    solucao_v, custo_v = metodo_de_vogel(custos, ofertas, demandas)
 
     print("Matriz de Alocações Canto Noroeste:")
-    for linha in MatrizInicial:
+    for linha in matriz_inicial:
         print(linha)
 
-    print("\nCusto Total de Transporte Canto Noroeste:", Zmin)
+    print("\nCusto Total de Transporte Canto Noroeste:", zmin)
 
     print("Matriz de Alocações (Método de Vogel):")
-    for linha in solucaoV:
+    for linha in solucao_v:
         print(linha)
 
-    print(f"\nCusto Total de Transporte: R$ {custoV}")
+    print(f"\nCusto Total de Transporte: R$ {custo_v}")
 
 if __name__ == "__main__":
     main()

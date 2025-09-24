@@ -1,6 +1,8 @@
+from copy import deepcopy
+
 def metodo_de_vogel(custos, oferta, demanda):
-    oferta_copia = oferta[:]
-    demanda_copia = demanda[:]
+    oferta_copia = deepcopy(oferta)
+    demanda_copia = deepcopy(demanda)
 
     num_origens = len(oferta)
     num_destinos = len(demanda)
@@ -34,13 +36,11 @@ def metodo_de_vogel(custos, oferta, demanda):
         max_pen_coluna = max(penalidade_coluna)
 
         if max_pen_linha >= max_pen_coluna:
-            idx = penalidade_linha.index(max_pen_linha)
-            i = idx
-            j = min([(custos[idx][j], j) for j in range(num_destinos) if demanda_copia[j] > 0])[1]
+            i = penalidade_linha.index(max_pen_linha)
+            j = min([(custos[i][j], j) for j in range(num_destinos) if demanda_copia[j] > 0])[1]
         else:
-            idx = penalidade_coluna.index(max_pen_coluna)
-            j = idx
-            i = min([(custos[i][idx], i) for i in range(num_origens) if oferta_copia[i] > 0])[1]
+            j = penalidade_coluna.index(max_pen_coluna)
+            i = min([(custos[i][j], i) for i in range(num_origens) if oferta_copia[i] > 0])[1]
 
         quantidade = min(oferta_copia[i], demanda_copia[j])
         alocacao[i][j] = quantidade
