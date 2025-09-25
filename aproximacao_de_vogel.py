@@ -50,6 +50,3 @@ def metodo_de_vogel(custos, oferta, demanda):
     custo_total = sum(alocacao[i][j] * custos[i][j] for i in range(num_origens) for j in range(num_destinos))
 
     return alocacao, custo_total
-
-
-
